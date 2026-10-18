@@ -1,0 +1,28 @@
+/* Today's reading overlay */
+#sheet,#mem,#calv,#patv{position:absolute;inset:0;z-index:20;visibility:hidden;pointer-events:none}
+#sheet.on,#mem.on,#calv.on,#patv.on{visibility:visible;pointer-events:auto}
+#sheet .dim,#mem .dim,#calv .dim,#patv .dim{position:absolute;inset:0;background:rgba(14,18,30,.30);opacity:0;transition:opacity .4s}
+#sheet.on .dim,#mem.on .dim,#calv.on .dim,#patv.on .dim{opacity:1}
+#sheet .sh,#mem .sh,#calv .sh,#patv .sh{position:absolute;left:0;right:0;top:56px;bottom:0;border-radius:36px 36px 0 0;background:var(--bg);overflow:hidden;box-shadow:0 -8px 40px rgba(0,0,0,.12);transform:translateY(105%);transition:transform .6s var(--ease)}
+#sheet.on .sh,#mem.on .sh,#calv.on .sh,#patv.on .sh{transform:none}
+#sheet .sh.drag,#mem .sh.drag,#calv .sh.drag,#patv .sh.drag{transition:none}
+.handle{position:absolute;left:50%;top:8px;transform:translateX(-50%);width:36px;height:5px;border-radius:3px;background:var(--ink);opacity:.2}
+.dragzone{position:absolute;left:0;right:0;top:0;height:64px;touch-action:none;cursor:grab}
+#sheet .xb,#mem .xb,#calv .xb,#patv .xb{position:absolute;right:16px;top:14px;width:44px;height:44px;border-radius:22px;background:rgba(0,0,0,.06);display:grid;place-items:center;z-index:2}
+.shc{position:absolute;left:0;right:0;top:34px;padding:0 24px;text-align:center}
+.shm{display:flex;justify-content:center;width:100%}
+.shm svg{margin:0 auto}
+.sgn{margin-top:14px;font:500 13px var(--font);color:var(--mute)}
+.shc h1{font:600 26px/1.15 var(--font);margin:6px 0 0}
+.shc .lead{margin:12px auto 0;max-width:300px;font-size:15px;line-height:1.5;color:var(--mute)}
+.shc .rows{text-align:left;margin-top:12px}
+.shc .od{margin-top:20px;padding:14px 16px;border-radius:18px;background:var(--fill);text-align:left;font:400 14.5px/1.45 var(--font)}
+.shc .od b{font-weight:600}
+.shc .od span{color:var(--mute)}
+.stg{opacity:0;transform:translateY(14px)}
+#sheet.on .stg{opacity:1;transform:none;transition:opacity .45s ease,transform .6s var(--spring);transition-delay:calc(var(--i)*70ms + 200ms)}
+.shf{position:absolute;left:0;right:0;bottom:0;padding:34px 24px 30px;text-align:center}
+.shf .cta{position:static;width:100%}
+.shf .sec{margin-top:10px;font:500 14px var(--font);color:var(--mute);height:30px}
+.cta{height:56px;border-radius:28px;background:var(--ink);color:#fff;font:600 16px var(--font);display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .3s var(--spring)}
+.cta:active{transform:scale(.97)}

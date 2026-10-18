@@ -1,0 +1,117 @@
+/* Home: greeting, reading row, feed (chat + moments), dock */
+.read{position:absolute;left:24px;right:24px;top:110px;display:flex;align-items:center;gap:10px;height:48px;padding:0 14px;border-radius:24px;border:1px solid var(--line);font:500 14.5px var(--font);white-space:nowrap;z-index:2;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);text-align:left;transition:top .55s var(--ease),transform .25s var(--spring)}
+.phone.inhome .read{top:182px}
+.read:active{transform:scale(.98)}
+.read .d{opacity:.42;font-weight:400;margin-left:6px}
+.read .dot{width:7px;height:7px;border-radius:4px;background:var(--ac);margin-left:auto;transition:opacity .3s,transform .3s}
+.read.seen .dot{opacity:0;transform:scale(0)}
+.read .gl{letter-spacing:5px;font-size:17px}
+
+#greet{position:absolute;left:24px;right:24px;top:312px;text-align:center;transition:transform .5s var(--ease),opacity .4s;z-index:1}
+.gm{display:flex;justify-content:center}
+#greet h1{font:600 27px/1.15 var(--font);margin:30px 0 0;white-space:nowrap}
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:22px auto 0;max-width:350px}
+.pills button{height:36px;padding:0 14px;border-radius:18px;border:1px solid var(--line);font:400 13.5px var(--font);color:var(--mute);transition:transform .25s var(--spring),background .2s}
+.pills button:active{transform:scale(.94);background:var(--fill)}
+#greet p{margin:20px auto 0;max-width:270px;font-size:14.5px;line-height:1.45;color:var(--mute);transition:opacity .3s}
+#greet.gone{opacity:0;transform:translateY(-30px);pointer-events:none}
+.phone.kb #greet:not(.gone){transform:translateY(-78px) scale(.86);transform-origin:50% 0}
+.phone.kb #greet p{opacity:0}
+
+#feed{position:absolute;left:24px;right:24px;top:172px;bottom:150px;overflow-y:auto;scrollbar-width:none;padding:6px 0 24px;opacity:0;pointer-events:none;transition:opacity .4s,bottom .45s var(--ease);-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14px,#000 calc(100% - 22px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 14px,#000 calc(100% - 22px),transparent 100%);z-index:1}
+#feed::-webkit-scrollbar{display:none}
+#feed.on{opacity:1;pointer-events:auto}
+.phone.kb #feed{bottom:calc(var(--kbh) + 76px)}
+.bub{display:flex;justify-content:flex-end;margin:14px 0 20px}
+.bub div{max-width:280px;padding:10px 14px;border-radius:20px 20px 6px 20px;background:var(--fill);font:400 15px/1.4 var(--font);text-align:left}
+.bub.in{animation:enter .5s var(--spring) both}
+.zr{display:flex;gap:12px;align-items:flex-start;text-align:left;margin:6px 0 22px}
+.zr .mk{flex:none;margin-top:1px}
+.zr .bd{flex:1;min-width:0}
+.zr .in1{font:400 15px/1.5 var(--font);padding-top:3px}
+.zr .rows{margin-left:-40px}
+.zrow{display:flex;gap:12px;align-items:flex-start;margin-top:16px;animation:enter .55s var(--spring) both}
+.zrow .g{flex:none;width:28px;height:28px;border-radius:14px;background:var(--fill);display:grid;place-items:center}
+.zrow .g .gt{font-size:18px}
+.zrow div.t{font:400 15px/1.45 var(--font)}
+.zrow b{font-weight:600}
+.zrow span{color:var(--mute)}
+.zr .ask{font:400 15px/1.5 var(--font);margin-top:22px;animation:enter .55s var(--spring) both}
+.zr .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips button{height:34px;padding:0 13px;border-radius:17px;border:1px solid var(--line);background:rgba(255,255,255,.6);font:500 13.5px var(--font);animation:enter .55s var(--spring) both;transition:transform .25s var(--spring)}
+.chips button:active{transform:scale(.94)}
+.zr.plain .bd .in1{padding-top:4px}
+.typing{display:flex;gap:5px;align-items:center;height:30px;padding-left:2px}
+.typing i{width:7px;height:7px;border-radius:4px;background:var(--mute);opacity:.5;animation:bounce 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:none;opacity:.35}30%{transform:translateY(-5px);opacity:.9}}
+.mom{display:flex;gap:12px;margin-top:18px;text-align:left}
+.mom .rail{flex:none;width:8px;display:flex;flex-direction:column;align-items:center}
+.mom .rail i{width:8px;height:8px;border-radius:4px;background:var(--ac);margin-top:6px;display:block}
+.mom .rail b{flex:1;width:1px;background:var(--line);margin-top:4px}
+.mom .tm{font:500 12.5px var(--font);color:var(--mute)}
+.mom .tx{font:400 15px/1.4 var(--font);margin-top:2px;white-space:pre-wrap;word-break:break-word}
+.mom .md{margin-top:8px}
+.mom img.ph{display:block;width:168px;height:126px;object-fit:cover;border-radius:16px}
+.tagc{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px 0 7px;border-radius:13px;background:var(--fill);font:500 12.5px var(--font);margin-top:8px}
+.vm{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 14px 0 12px;border-radius:20px;background:var(--fill);font:500 13px var(--font);font-variant-numeric:tabular-nums}
+.vm canvas{width:92px;height:22px;display:block}
+.mom.new{animation:enter .7s var(--spring) both}
+.mom.new .tx,.mom.new .tm{animation:glow 1.6s .4s ease-out both}
+@keyframes enter{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes glow{0%{background:rgba(242,112,29,.28)}100%{background:transparent}}
+
+/* dock: add-a-moment pill, then the Zumi-only text bar */
+.dock{position:absolute;left:0;right:0;bottom:0;padding:14px 24px 28px;background:transparent;z-index:3;transition:bottom .45s var(--ease),padding .45s var(--ease)}
+.phone.kb .dock{bottom:var(--kbh);padding-bottom:10px;padding-top:10px}
+.pillrow{display:flex;justify-content:center;gap:8px;margin-bottom:14px;transition:opacity .3s,height .4s var(--ease),margin .4s var(--ease)}
+.phone.kb .pillrow{opacity:0;height:0;margin:0;overflow:hidden;pointer-events:none}
+.addpill{display:flex;margin:0;height:36px;padding:0 14px;border-radius:18px;background:var(--ink);color:var(--bg);font:500 13px var(--font);align-items:center;gap:6px;transition:transform .25s var(--spring),opacity .3s,height .4s var(--ease),margin .4s var(--ease)}
+.addpill:active{transform:scale(.94)}
+
+.bar{height:52px;border-radius:26px;background:var(--fill);display:flex;align-items:center;padding:0 6px 0 20px;gap:6px;border:1.5px solid transparent;transition:background .25s,border-color .25s,box-shadow .25s}
+.bar.active{background:#fff;border-color:var(--ink);box-shadow:0 8px 24px rgba(28,28,30,.10)}
+.bar input{flex:1;min-width:0;height:100%;background:transparent;border:none;outline:none;font:400 17px var(--font);color:var(--ink);padding:0;caret-color:var(--ac)}
+.bar input::placeholder{color:var(--mute)}
+.bar .b{width:40px;height:40px;border-radius:20px;display:grid;place-items:center;flex:none;transition:transform .25s var(--spring),background .25s,opacity .25s}
+.bar .b:active{transform:scale(.88)}
+.bar .send{background:var(--ink);opacity:0;transform:scale(.5);pointer-events:none;position:absolute;right:30px}
+.bar{position:relative}
+.bar.has .send{opacity:1;transform:none;pointer-events:auto}
+.bar.has .mic{opacity:0;pointer-events:none;transform:scale(.5)}
+.bar .mic.live{background:rgba(242,112,29,.16);animation:livep 1s infinite}
+@keyframes livep{50%{box-shadow:0 0 0 7px rgba(242,112,29,.14)}}
+
+/* streak of days: orbs in the mascot gradient, each holding that day's key memory. Home only */
+.streak{position:absolute;left:26px;right:26px;top:102px;height:68px;display:flex;justify-content:space-between;align-items:flex-start;z-index:2;transition:opacity .4s,transform .55s var(--ease)}
+.phone:not(.inhome) .streak{opacity:0;transform:translateY(-14px);pointer-events:none}
+.sd{display:flex;flex-direction:column;align-items:center;gap:7px;width:40px}
+.sd span{font:500 11px var(--font);color:var(--mute)}
+.orb{position:relative;display:block;width:38px;height:38px;border-radius:50%;padding:2.5px;background:var(--gr);box-shadow:0 6px 14px rgba(236,98,38,.24);animation:orbin .7s var(--spring) both;animation-delay:calc(var(--i)*70ms + 150ms);transition:transform .3s var(--spring)}
+button.orb:active{transform:scale(.88)}
+.orb i{display:block;width:100%;height:100%;border-radius:50%;background:var(--gr);background-size:cover;background-position:center;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.9)}
+.orb i.noimg{background:radial-gradient(circle at 30% 26%,rgba(255,255,255,.6),transparent 44%),var(--gr)}
+.orb.now::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1.3px solid rgba(28,28,30,.55);animation:ringp 2.2s ease-in-out infinite}
+.orb.fut{background:none;box-shadow:none;border:1.2px dashed rgba(60,60,67,.38);padding:0}
+@keyframes orbin{from{opacity:0;transform:scale(.3) translateY(8px)}to{opacity:1;transform:none}}
+@keyframes ringp{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.14);opacity:.5}}
+/* end-the-day pill */
+.endpill{height:36px;padding:0 14px 0 10px;border-radius:18px;background:rgba(255,255,255,.75);border:1px solid var(--line);font:500 13px var(--font);align-items:center;gap:6px;transition:transform .25s var(--spring)}
+.endpill:not([hidden]){display:flex;animation:enter .6s var(--spring) both,nudge 1.8s .8s 3 ease-in-out}
+.endpill:active{transform:scale(.94)}
+.endpill .gt{font-size:16px}
+.endpill.done{background:var(--ink);color:#fff;border-color:var(--ink);animation:none}
+@keyframes nudge{0%,100%{box-shadow:0 0 0 0 rgba(242,112,29,0)}50%{box-shadow:0 0 0 6px rgba(242,112,29,.2)}}
+
+.pstack{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;margin-right:-24px;padding-right:24px;scrollbar-width:none}
+.pstack::-webkit-scrollbar{display:none}
+.pstack img{flex:none;width:132px;height:166px;object-fit:cover;border-radius:18px;scroll-snap-align:start;box-shadow:0 6px 14px rgba(60,40,20,.14)}
+.mom>div:last-child{min-width:0;flex:1}
+
+/* streak: the same muted ring and gap as the calendar; only today keeps the gradient */
+.orb:not(.now):not(.fut){box-sizing:border-box;width:40px;height:40px;padding:3px;background:var(--bg);border:1.3px solid rgba(60,60,67,.30);box-shadow:none}
+.orb:not(.now):not(.fut) i{box-shadow:none}
+.orb:not(.now):not(.fut) i.nop{background:var(--fill)}
+.orb.now,.orb.fut{width:40px;height:40px;box-sizing:border-box}
+.orb.fut{border-width:1.3px}
+.pstack{padding:6px 24px 14px 0;margin-top:-6px;margin-bottom:-8px}
